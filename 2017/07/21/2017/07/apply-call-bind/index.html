@@ -6,14 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://msc.party">
-  <title>Tag: VUE | 独木桥先生</title>
+  <title>apply、call、bind区别、用法 | 独木桥先生</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="独木桥先生">
-<meta property="og:url" content="http://msc.party/tags/VUE/index.html">
+  <meta name="description" content="apply、call、bind区别、用法apply和call都是为了改变某个函数运行时的上下文而存在的（就是为了改变函数内部this的指向； 如果使用apply或call方法，那么this指向他们的第一个参数，apply的第二个参数是一个参数数组，call的第二个及其以后的参数都是数组里面的元素，就是说要全部列举出来； 他们的常用用法： 数组之间的追加； 获取数组中的最大值和最小值，利用他们扩充作">
+<meta name="keywords" content="others">
+<meta property="og:type" content="article">
+<meta property="og:title" content="apply、call、bind区别、用法">
+<meta property="og:url" content="http://msc.party/2017/07/21/2017/07/apply-call-bind/index.html">
 <meta property="og:site_name" content="独木桥先生">
+<meta property="og:description" content="apply、call、bind区别、用法apply和call都是为了改变某个函数运行时的上下文而存在的（就是为了改变函数内部this的指向； 如果使用apply或call方法，那么this指向他们的第一个参数，apply的第二个参数是一个参数数组，call的第二个及其以后的参数都是数组里面的元素，就是说要全部列举出来； 他们的常用用法： 数组之间的追加； 获取数组中的最大值和最小值，利用他们扩充作">
+<meta property="og:updated_time" content="2017-07-21T03:04:48.747Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="独木桥先生">
+<meta name="twitter:title" content="apply、call、bind区别、用法">
+<meta name="twitter:description" content="apply、call、bind区别、用法apply和call都是为了改变某个函数运行时的上下文而存在的（就是为了改变函数内部this的指向； 如果使用apply或call方法，那么this指向他们的第一个参数，apply的第二个参数是一个参数数组，call的第二个及其以后的参数都是数组里面的元素，就是说要全部列举出来； 他们的常用用法： 数组之间的追加； 获取数组中的最大值和最小值，利用他们扩充作">
   
     <link rel="alternative" href="/atom.xml" title="独木桥先生" type="application/atom+xml">
   
@@ -197,68 +202,185 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-2017/07/apply-call-bind" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/12/2017/06/vue-img-cropper/" class="archive-article-date">
-  	<time datetime="2017-07-12T02:07:49.179Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-12</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/07/12/2017/06/vue-img-cropper/">vue-image-cropper vue图片裁剪插件</a>
+    <h1 class="article-title" itemprop="name">
+      apply、call、bind区别、用法
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2017/07/21/2017/07/apply-call-bind/" class="archive-article-date">
+  	<time datetime="2017-07-21T02:59:08.536Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-21</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="apply、call、bind区别、用法"><a href="#apply、call、bind区别、用法" class="headerlink" title="apply、call、bind区别、用法"></a>apply、call、bind区别、用法</h1><p>apply和call都是为了改变某个函数运行时的上下文而存在的（就是为了改变函数内部this的指向；</p>
+<p>如果使用apply或call方法，那么this指向他们的第一个参数，apply的第二个参数是一个参数数组，call的第二个及其以后的参数都是数组里面的元素，就是说要全部列举出来；</p>
+<h2 id="他们的常用用法："><a href="#他们的常用用法：" class="headerlink" title="他们的常用用法："></a>他们的常用用法：</h2><ul>
+<li>数组之间的追加；</li>
+<li>获取数组中的最大值和最小值，利用他们扩充作用域拥有Math的min和max方法；</li>
+</ul>
+<p>由于没有什么对象调用这个方法，所以第一个参数可以写作null或者本身；</p>
+<p>var  numbers = [5, 458 , 120 , -215 ];<br>var  maxInNumbers = Math.max.apply(Math, numbers),   //458<br>       maxInNumbers = Math.max.call(Math,5, 458 , 120 , -215); //458</p>
+<ul>
+<li>验证是否是数组（前提是toString（）方法没有被重写过）<br>function   isArray(obj){<br>  return Object.prototype.toString.call(obj) === ‘[object Array]’ ;<br>}</li>
+<li>让类数组拥有数组的方法</li>
+</ul>
+<p>比如arguments对象，获取到的文档节点等，并没有数组的那些方法：<br>Array.prototype.slice.apply（argument）; //理论上来说这个比较快，直接在原型上查找slice方法<br>                                                                 //但实际上比较慢<br>或者<br>[].slice.apply(arguments); //理论上来说这个比较慢，因为要Array做一个实例化再查找slice方法<br>                                        //实际上比较快，因为现在的各种自动化工具会把上一种方法转换为这种，而第二种代码比较简洁，所以会比较快；</p>
+<p>bind（）–也是改变函数体内this的指向;<br>bind会创建一个新函数，称为绑定函数，当调用这个函数的时候，绑定函数会以创建它时传入bind（）方法的第一个参数作为this，传入bind（）方法的第二个及以后的参数加上绑定函数运行时本身的参数按照顺序作为原函数的参数来调用原函数；</p>
+<p>bind与apply、call最大的区别就是：bind不会立即调用，其他两个会立即调用<br>例子：</p>
+<p>如果多次调用bind，那么多出来的次数都是无效的，</p>
+<p>三个的使用区别：<br>都是用来改变函数的this对象的指向的；<br>第一个参数都是this要指向的对象；<br>都可以利用后续参数传参；<br>bind是返回对应函数，便于稍后调用，apply、call是立即调用；</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你的认可，我会做得更好<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/alipay.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/wxpay.jpg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">VUE</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">图片裁剪</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">others</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://msc.party/2017/07/21/2017/07/apply-call-bind/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2017/07/19/2017/07/learn-node/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">node学习</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+  
+  
   
 
-    
+  
+  <div id="SOHUCS" sid="2017/07/apply-call-bind" ></div> 
+<script type="text/javascript"> 
+(function(){ 
+var appid = "cysSoaMKi"; 
+var conf = "59396372c2b4d878f27b6a243ec300c3"; 
+var width = window.innerWidth || document.documentElement.clientWidth; 
+if (width < 960) { 
+window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="//changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("//changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); </script>
+  
+
+  
 
 
           </div>
@@ -281,9 +403,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		root: "/",
@@ -535,44 +657,6 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
                 <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
 
                 <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
-
-                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
-
-                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
-
-                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
-                <!-- element will get class pswp__preloader--active when preloader is running -->
-                <div class="pswp__preloader">
-                    <div class="pswp__preloader__icn">
-                      <div class="pswp__preloader__cut">
-                        <div class="pswp__preloader__donut"></div>
-                      </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
-                <div class="pswp__share-tooltip"></div> 
-            </div>
-
-            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
-            </button>
-
-            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
-            </button>
-
-            <div class="pswp__caption">
-                <div class="pswp__caption__center"></div>
-            </div>
-
-        </div>
-
-    </div>
-
-</div>
-  </div>
-</body>
-</html>ton--share" style="display:none" title="Share"></button>
 
                 <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
 
