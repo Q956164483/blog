@@ -179,13 +179,13 @@
 <h2 id="他们的常用用法："><a href="#他们的常用用法：" class="headerlink" title="他们的常用用法："></a>他们的常用用法：</h2><ul>
 <li>数组之间的追加；</li>
 <li><p>获取数组中的最大值和最小值，利用他们扩充作用域拥有Math的min和max方法；由于没有什么对象调用这个方法，所以第一个参数可以写作null或者本身；</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span>  numbers = [<span class="number">5</span>, <span class="number">458</span> , <span class="number">120</span> , <span class="number">-215</span> ]; </div><div class="line"><span class="keyword">var</span>  maxInNumbers = <span class="built_in">Math</span>.max.apply(<span class="built_in">Math</span>, numbers), <span class="comment">//458</span></div><div class="line">maxInNumbers = <span class="built_in">Math</span>.max.call(<span class="built_in">Math</span>,<span class="number">5</span>, <span class="number">458</span> , <span class="number">120</span> , <span class="number">-215</span>); <span class="comment">//458</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span>  numbers = [<span class="number">5</span>, <span class="number">458</span> , <span class="number">120</span> , <span class="number">-215</span> ]; </span><br><span class="line"><span class="keyword">var</span>  maxInNumbers = <span class="built_in">Math</span>.max.apply(<span class="built_in">Math</span>, numbers), <span class="comment">//458</span></span><br><span class="line">maxInNumbers = <span class="built_in">Math</span>.max.call(<span class="built_in">Math</span>,<span class="number">5</span>, <span class="number">458</span> , <span class="number">120</span> , <span class="number">-215</span>); <span class="comment">//458</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>验证是否是数组（前提是toString()方法没有被重写过）</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span>   <span class="title">isArray</span>(<span class="params">obj</span>)</span>&#123; </div><div class="line">    <span class="keyword">return</span> <span class="built_in">Object</span>.prototype.toString.call(obj) === <span class="string">'[object Array]'</span> ;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span>   <span class="title">isArray</span>(<span class="params">obj</span>)</span>&#123; </span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">Object</span>.prototype.toString.call(obj) === <span class="string">'[object Array]'</span> ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>让类数组拥有数组的方法,比如arguments对象，获取到的文档节点等，并没有数组的那些方法：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Array</span>.prototype.slice.apply(argument); <span class="comment">/*理论上来说这个比较快，直接在原型上查找slice方法;但实际上比较慢或者*/</span></div><div class="line"></div><div class="line">[].slice.apply(<span class="built_in">arguments</span>); <span class="comment">/*理论上来说这个比较慢，因为要Array做一个实例化再查找slice方法,实际上比较快，因为现在的各种自动化工具会把上一种方法转换为这种，而第二种代码比较简洁，所以会比较快；*/</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Array</span>.prototype.slice.apply(argument); <span class="comment">/*理论上来说这个比较快，直接在原型上查找slice方法;但实际上比较慢或者*/</span></span><br><span class="line"></span><br><span class="line">[].slice.apply(<span class="built_in">arguments</span>); <span class="comment">/*理论上来说这个比较慢，因为要Array做一个实例化再查找slice方法,实际上比较快，因为现在的各种自动化工具会把上一种方法转换为这种，而第二种代码比较简洁，所以会比较快；*/</span></span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <h2 id="bind-–也是改变函数体内this的指向"><a href="#bind-–也是改变函数体内this的指向" class="headerlink" title="bind()–也是改变函数体内this的指向;"></a>bind()–也是改变函数体内this的指向;</h2><p>bind会创建一个新函数，称为绑定函数，当调用这个函数的时候，绑定函数会以创建它时传入bind（）方法的第一个参数作为this，传入bind（）方法的第二个及以后的参数加上绑定函数运行时本身的参数按照顺序作为原函数的参数来调用原函数；</p>
@@ -355,7 +355,7 @@ window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="tex
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2017 独木桥先生
+    		&copy; 2018 独木桥先生
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
@@ -437,15 +437,23 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">移动端</a>
+                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">others</a>
+                <a href="javascript:void(0)" class="js-tag color3">调试</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">工具</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">css3</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">vue</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -461,31 +469,7 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vue</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">实战</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">swiper</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">node</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">express</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">js</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">其他</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -501,27 +485,19 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">VUE</a>
+                <a href="javascript:void(0)" class="js-tag color2">others</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">图片裁剪</a>
+                <a href="javascript:void(0)" class="js-tag color5">node</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">gitpage</a>
+                <a href="javascript:void(0)" class="js-tag color3">express</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">scrollIntoView</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">video</a>
+                <a href="javascript:void(0)" class="js-tag color2">swiper</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -533,11 +509,39 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">调试</a>
+                <a href="javascript:void(0)" class="js-tag color4">VUE</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">工具</a>
+                <a href="javascript:void(0)" class="js-tag color5">图片裁剪</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">scrollIntoView</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">video</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">gitpage</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">其他</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">移动端</a>
               </li>
             
             <div class="clearfix"></div>
