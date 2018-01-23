@@ -8,17 +8,17 @@
   <link rel="dns-prefetch" href="http://msc.party">
   <title>nginx | 独木桥先生</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="安装在Centos下，yum源不提供nginx的安装，可以通过切换yum源的方法获取安装。目前很多像centos7系统已经自带这几个库，所以安装前可以先查看一下本地是否已经存在。存在可直接跳至第四步骤。需要使用安装包编译安装的，如下。以下命令均需root权限执行： 首先安装必要的库（nginx 中gzip模块需要 zlib 库，rewrite模块需要 pcre 库，ssl 功能需要openssl库">
+  <meta name="description" content="Nginx是一款轻量级的网页服务器、反向代理服务器。相较于Apache、lighttpd具有占有内存少，稳定性高等优势。它最常的用途是提供反向代理服务。">
 <meta name="keywords" content="nginx">
 <meta property="og:type" content="article">
 <meta property="og:title" content="nginx">
 <meta property="og:url" content="http://msc.party/2018/01/23/2018/0123cent0s下nginx的安装/index.html">
 <meta property="og:site_name" content="独木桥先生">
-<meta property="og:description" content="安装在Centos下，yum源不提供nginx的安装，可以通过切换yum源的方法获取安装。目前很多像centos7系统已经自带这几个库，所以安装前可以先查看一下本地是否已经存在。存在可直接跳至第四步骤。需要使用安装包编译安装的，如下。以下命令均需root权限执行： 首先安装必要的库（nginx 中gzip模块需要 zlib 库，rewrite模块需要 pcre 库，ssl 功能需要openssl库">
-<meta property="og:updated_time" content="2018-01-23T03:12:37.200Z">
+<meta property="og:description" content="Nginx是一款轻量级的网页服务器、反向代理服务器。相较于Apache、lighttpd具有占有内存少，稳定性高等优势。它最常的用途是提供反向代理服务。">
+<meta property="og:updated_time" content="2018-01-23T03:19:41.723Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="nginx">
-<meta name="twitter:description" content="安装在Centos下，yum源不提供nginx的安装，可以通过切换yum源的方法获取安装。目前很多像centos7系统已经自带这几个库，所以安装前可以先查看一下本地是否已经存在。存在可直接跳至第四步骤。需要使用安装包编译安装的，如下。以下命令均需root权限执行： 首先安装必要的库（nginx 中gzip模块需要 zlib 库，rewrite模块需要 pcre 库，ssl 功能需要openssl库">
+<meta name="twitter:description" content="Nginx是一款轻量级的网页服务器、反向代理服务器。相较于Apache、lighttpd具有占有内存少，稳定性高等优势。它最常的用途是提供反向代理服务。">
   
     <link rel="alternative" href="/atom.xml" title="独木桥先生" type="application/atom+xml">
   
@@ -172,7 +172,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>在Centos下，yum源不提供nginx的安装，可以通过切换yum源的方法获取安装。目前很多像centos7系统已经自带这几个库，所以安装前可以先查看一下本地是否已经存在。存在可直接跳至第四步骤。需要使用安装包编译安装的，如下。以下命令均需root权限执行：</p>
+        <p>Nginx是一款轻量级的网页服务器、反向代理服务器。相较于Apache、lighttpd具有占有内存少，稳定性高等优势。它最常的用途是提供反向代理服务。</p>
+<a id="more"></a> 
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>在Centos下，yum源不提供nginx的安装，可以通过切换yum源的方法获取安装。目前很多像centos7系统已经自带这几个库，所以安装前可以先查看一下本地是否已经存在。存在可直接跳至第四步骤。需要使用安装包编译安装的，如下。以下命令均需root权限执行：</p>
 <p>首先安装必要的库（nginx 中gzip模块需要 zlib 库，rewrite模块需要 pcre 库，ssl 功能需要openssl库）。选定/usr/local为安装目录，以下具体版本号根据实际改变。</p>
 <h3 id="1-安装PCRE库"><a href="#1-安装PCRE库" class="headerlink" title="1.安装PCRE库"></a>1.安装PCRE库</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ cd /usr/local/</span><br><span class="line">$ sudo wget ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-8.36.tar.gz</span><br><span class="line">$ sudo tar -zxvf pcre-8.36.tar.gz</span><br><span class="line">$ cd pcre-8.36</span><br><span class="line">$ sudo ./configure</span><br><span class="line">$ sudo make</span><br><span class="line">$ sudo make install</span><br></pre></td></tr></table></figure>
 <h3 id="2-安装zlib库"><a href="#2-安装zlib库" class="headerlink" title="2.安装zlib库"></a>2.安装zlib库</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ cd /usr/local/ </span><br><span class="line">$ sudo wget http://zlib.net/zlib-1.2.8.tar.gz</span><br><span class="line">$ sudo tar -zxvf zlib-1.2.8.tar.gz</span><br><span class="line">$ cd zlib-1.2.8</span><br><span class="line">$ sudo ./configure</span><br><span class="line">$ sudo make</span><br><span class="line">$ sudo make install</span><br></pre></td></tr></table></figure>
@@ -456,7 +458,7 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
+                <a href="javascript:void(0)" class="js-tag color3">工具</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -464,15 +466,15 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">工具</a>
+                <a href="javascript:void(0)" class="js-tag color4">vue</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">others</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">css3</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vue</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -504,7 +506,7 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">others</a>
+                <a href="javascript:void(0)" class="js-tag color5">scrollIntoView</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -520,11 +522,7 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">跨域</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">webpack</a>
+                <a href="javascript:void(0)" class="js-tag color1">video</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -536,11 +534,15 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">scrollIntoView</a>
+                <a href="javascript:void(0)" class="js-tag color3">跨域</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">video</a>
+                <a href="javascript:void(0)" class="js-tag color3">webpack</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -552,15 +554,15 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">移动端</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">其他</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">js</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">移动端</a>
+                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
               </li>
             
             <div class="clearfix"></div>
