@@ -8,17 +8,17 @@
   <link rel="dns-prefetch" href="http://msc.party">
   <title>取代jq的一些原生js方法 | 独木桥先生</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="取代jq的一些原生js方法逐步增强虽然像jQuery这样的库有助于解决许多浏览器之间不兼容的问题，但当你一旦开始使用纯JavaScript来完成所有工作的时候你确实会变得对他们很熟悉。为了避免写包含浏览器修改和只能解决浏览器兼容问题的JavaScript代码，我建议使用特征检测只将更现代化的浏览器作为目标来培养逐步增强的经验。这并不意味着从像IE7这样的浏览器上得不到任何东西，这只能说明在Java">
+  <meta name="description" content="jQuery相比，最基础且需求频繁的功能在纯JavaScript中是如何工作的。下面的每个例子，都提供jQuery和纯JavaScript两种方法。">
 <meta name="keywords" content="js">
 <meta property="og:type" content="article">
 <meta property="og:title" content="取代jq的一些原生js方法">
 <meta property="og:url" content="http://msc.party/2017/07/24/2017/取代jq的一些原生js方法/index.html">
 <meta property="og:site_name" content="独木桥先生">
-<meta property="og:description" content="取代jq的一些原生js方法逐步增强虽然像jQuery这样的库有助于解决许多浏览器之间不兼容的问题，但当你一旦开始使用纯JavaScript来完成所有工作的时候你确实会变得对他们很熟悉。为了避免写包含浏览器修改和只能解决浏览器兼容问题的JavaScript代码，我建议使用特征检测只将更现代化的浏览器作为目标来培养逐步增强的经验。这并不意味着从像IE7这样的浏览器上得不到任何东西，这只能说明在Java">
-<meta property="og:updated_time" content="2017-09-05T03:23:29.153Z">
+<meta property="og:description" content="jQuery相比，最基础且需求频繁的功能在纯JavaScript中是如何工作的。下面的每个例子，都提供jQuery和纯JavaScript两种方法。">
+<meta property="og:updated_time" content="2018-02-09T06:34:49.913Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="取代jq的一些原生js方法">
-<meta name="twitter:description" content="取代jq的一些原生js方法逐步增强虽然像jQuery这样的库有助于解决许多浏览器之间不兼容的问题，但当你一旦开始使用纯JavaScript来完成所有工作的时候你确实会变得对他们很熟悉。为了避免写包含浏览器修改和只能解决浏览器兼容问题的JavaScript代码，我建议使用特征检测只将更现代化的浏览器作为目标来培养逐步增强的经验。这并不意味着从像IE7这样的浏览器上得不到任何东西，这只能说明在Java">
+<meta name="twitter:description" content="jQuery相比，最基础且需求频繁的功能在纯JavaScript中是如何工作的。下面的每个例子，都提供jQuery和纯JavaScript两种方法。">
   
     <link rel="alternative" href="/atom.xml" title="独木桥先生" type="application/atom+xml">
   
@@ -172,13 +172,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="取代jq的一些原生js方法"><a href="#取代jq的一些原生js方法" class="headerlink" title="取代jq的一些原生js方法"></a>取代jq的一些原生js方法</h1><h2 id="逐步增强"><a href="#逐步增强" class="headerlink" title="逐步增强"></a>逐步增强</h2><p>虽然像jQuery这样的库有助于解决许多浏览器之间不兼容的问题，但当你一旦开始使用纯JavaScript来完成所有工作的时候你确实会变得对他们很熟悉。为了避免写包含浏览器修改和只能解决浏览器兼容问题的JavaScript代码，我建议使用特征检测只将更现代化的浏览器作为目标来培养逐步增强的经验。这并不意味着从像IE7这样的浏览器上得不到任何东西，这只能说明在JavaScript没有增强的情况下他们得到一个更基础的经验。<br><a id="more"></a></p>
-<h2 id="我们是怎么做的"><a href="#我们是怎么做的" class="headerlink" title="我们是怎么做的"></a>我们是怎么做的</h2><p>我们有一个叫做”feature.js”的分离的JavaScript部分，它拥有所有的功能测试。真实的测试列表比这长多了，但让我们稍晚点再回到这问题吧。为了消除一些老浏览器的不兼容，我们使用如下两个测试：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> feature = &#123;</span><br><span class="line">  addEventListener : !!<span class="built_in">window</span>.addEventListener,</span><br><span class="line">  querySelectorAll : !!<span class="built_in">document</span>.querySelectorAll,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
-<p>然后，在主应用程序部分，我们检测这些特性是否能被下面例子中简单的“if”语句支持。如果不被支持，那么浏览器将不会执行如下的任何代码：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (feature.addEventListener &amp;&amp; feature.querySelectorAll) &#123;</span><br><span class="line">  <span class="keyword">this</span>.init();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>这两个测试确保我们在JavaScript中使用CSS选择器时有本地方法（querySelectorAll）可用，添加和删除事件的简便方法（addEventListener）且浏览器标准支持比IE8的好。阅读有关这个方法的更多内容请访问BBC blog的 “Cutting the mustard” 文章。</p>
-<h2 id="浏览器支持"><a href="#浏览器支持" class="headerlink" title="浏览器支持"></a>浏览器支持</h2><p>这儿有一个我们测试的哪些浏览器支持这个特性，且日后能保持运行JavaScript的粗略列表：  </p>
-<p>IE9+<br>Firefox 3.5+<br>Opera 9+<br>Safari 4+<br>Chrome 1+<br>iPhone and iPad iOS1+<br>Android phone and tablets 2.1+<br>Blackberry OS6+<br>Windows 7.5+<br>Mobile Firefox<br>Opera Mobile</p>
-<h2 id="基础原生JavaScript方法"><a href="#基础原生JavaScript方法" class="headerlink" title="基础原生JavaScript方法"></a>基础原生JavaScript方法</h2><p>让我们开始关注与jQuery相比，最基础且需求频繁的功能在纯JavaScript中是如何工作的。对于每个例子，我都打算提供jQuery和纯JavaScript两种方法。</p>
+        <p>jQuery相比，最基础且需求频繁的功能在纯JavaScript中是如何工作的。下面的每个例子，都提供jQuery和纯JavaScript两种方法。<br><a id="more"></a> </p>
 <h2 id="Document-Ready-事件"><a href="#Document-Ready-事件" class="headerlink" title="Document Ready 事件"></a>Document Ready 事件</h2><p>在jQuery中，你们中的许多人可能过去常常像这样使用 document.ready ：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="built_in">document</span>).ready(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">// Code</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
 <p>但是你知道，你可以将所有的JavaScript放在页面的底端，但他们确实是一回事吗？JavaScript同样拥有一个DOM内容加载事件的侦听器，而不是使用jQuery的document.ready:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.addEventListener(<span class="string">"DOMContentLoaded"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">// Code</span></span><br><span class="line">&#125;, <span class="literal">false</span>);</span><br></pre></td></tr></table></figure></p>
 <h2 id="选择器API"><a href="#选择器API" class="headerlink" title="选择器API"></a>选择器API</h2><p>JavaScript的本地选择器API非常优秀。它对CSS选择器是有用的且jQuery提供的非常类似。如果你过去经常在jQuery中这样写：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> element = $(<span class="string">"div"</span>);</span><br></pre></td></tr></table></figure></p>
@@ -464,27 +458,19 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">cdn</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">打包</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">others</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">调试</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">vue</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">css3</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">others</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -508,14 +494,6 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">跨域</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">webpack</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">node</a>
               </li>
              
@@ -524,11 +502,7 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">gitpage</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+                <a href="javascript:void(0)" class="js-tag color1">video</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -544,11 +518,11 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">video</a>
+                <a href="javascript:void(0)" class="js-tag color3">跨域</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">其他</a>
+                <a href="javascript:void(0)" class="js-tag color3">webpack</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -556,7 +530,7 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">css3</a>
+                <a href="javascript:void(0)" class="js-tag color3">其他</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -564,7 +538,15 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">swiper</a>
+                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">cdn</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">打包</a>
               </li>
             
             <div class="clearfix"></div>

@@ -231,7 +231,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Nginx是一款轻量级的网页服务器、反向代理服务器。相较于Apache、lighttpd具有占有内存少，稳定性高等优势。它最常的用途是提供反向代理服务。</p>
+        <p>Nginx是一款轻量级的网页服务器、反向代理服务器。相较于Apache、lighttpd具有占有内存少，稳定性高等优势。它最常的用途是提供反向代理服务。<br>
         
           <a class="article-more-a" href="/2018/01/23/2018/0123cent0s下nginx的安装/#more">more >></a>
         
@@ -353,8 +353,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--开启对web app的支持--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"apple-mobile-web-app-capable"</span> <span class="attr">content</span>=<span class="string">"yes"</span> /&gt;</span></span><br><span class="line"><span class="comment">&lt;!--主要是正对苹果手机将数字自动识别为号码--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"format-detection"</span> <span class="attr">content</span>=<span class="string">"telephone=no"</span> /&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 忽略识别邮箱，主要是针对安卓手机会自动将符合邮箱格式的字符串识别为邮箱地址--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">content</span>=<span class="string">"email=no"</span> <span class="attr">name</span>=<span class="string">"format-detection"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"apple-itunes-app"</span> <span class="attr">content</span>=<span class="string">"app-id=myAppStoreID, affiliate-data=myAffiliateData, app-argument=myURL"</span> /&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 添加智能 App 广告条 Smart App Banner：告诉浏览器这个网站对应的app，并在页面上显示下载banner:https://developer.apple.com/library/ios/documentation/AppleApplications/Reference/SafariWebContent/PromotingAppswithAppBanners/PromotingAppswithAppBanners.html --&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 针对手持设备优化，主要是针对一些老的不识别viewport的浏览器，比如黑莓 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"HandheldFriendly"</span> <span class="attr">content</span>=<span class="string">"true"</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 微软的老式浏览器 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"MobileOptimized"</span> <span class="attr">content</span>=<span class="string">"320"</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- uc强制竖屏 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"screen-orientation"</span> <span class="attr">content</span>=<span class="string">"portrait"</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- QQ强制竖屏 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"x5-orientation"</span> <span class="attr">content</span>=<span class="string">"portrait"</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- UC强制全屏 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"full-screen"</span> <span class="attr">content</span>=<span class="string">"yes"</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- QQ强制全屏 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"x5-fullscreen"</span> <span class="attr">content</span>=<span class="string">"true"</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- UC应用模式 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"browsermode"</span> <span class="attr">content</span>=<span class="string">"application"</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- QQ应用模式 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"x5-page-mode"</span> <span class="attr">content</span>=<span class="string">"app"</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- windows phone 点击无高光 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"msapplication-tap-highlight"</span> <span class="attr">content</span>=<span class="string">"no"</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
+        <p>直接上代码<br>
+        
+          <a class="article-more-a" href="/2017/09/05/2017/移动端浏览器的一些hack/#more">more >></a>
+        
       
 
       
@@ -473,8 +475,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="segmentfault-别人整理的工作中常用的插件，很不错，收藏"><a href="#segmentfault-别人整理的工作中常用的插件，很不错，收藏" class="headerlink" title="segmentfault 别人整理的工作中常用的插件，很不错，收藏"></a>segmentfault 别人整理的工作中常用的插件，很不错，收藏</h2><p><a href="https://segmentfault.com/a/1190000008997798?utm_source=weekly&amp;utm_medium=email&amp;utm_campaign=email_weekly" target="_blank" rel="noopener">阅读原文</a></p>
-
+        <p>segmentfault 别人整理的工作中常用的插件，很不错，收藏一下<br>
+        
+          <a class="article-more-a" href="/2017/08/23/2017/工作中常用的插件收藏/#more">more >></a>
+        
       
 
       
@@ -532,7 +536,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="有时候我们用vue框架的时候，要用到很多手势，像tap、doubletap、longtap……，当然现在网上有很多手势裤什么的，拿来改一下也是可以实现自己想要的效果滴，我是希望用vue-的时候类似于"><a href="#有时候我们用vue框架的时候，要用到很多手势，像tap、doubletap、longtap……，当然现在网上有很多手势裤什么的，拿来改一下也是可以实现自己想要的效果滴，我是希望用vue-的时候类似于" class="headerlink" title="有时候我们用vue框架的时候，要用到很多手势，像tap、doubletap、longtap……，当然现在网上有很多手势裤什么的，拿来改一下也是可以实现自己想要的效果滴，我是希望用vue 的时候类似于"></a>有时候我们用vue框架的时候，要用到很多手势，像tap、doubletap、longtap……，当然现在网上有很多手势裤什么的，拿来改一下也是可以实现自己想要的效果滴，我是希望用vue 的时候类似于</h2>
+        <p>有时候我们用vue框架的时候，要用到很多手势，像tap、doubletap、longtap……，当然现在网上有很多手势裤什么的，拿来改一下也是可以实现自己想要的效果滴，我是希望用vue 的时候类似于<br>
         
           <a class="article-more-a" href="/2017/08/22/2017/vue 自定义事件/#more">more >></a>
         
@@ -593,8 +597,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="webpack-开发环境跨域解决方案"><a href="#webpack-开发环境跨域解决方案" class="headerlink" title="webpack 开发环境跨域解决方案"></a>webpack 开发环境跨域解决方案</h1><p><a href="https://segmentfault.com/q/1010000005271156/a-1020000005271816" target="_blank" rel="noopener">webpack-dev-server 代理请求 api</a></p>
-
+        <p>配置webpack来解决开发环境的跨域问题<br>
+        
+          <a class="article-more-a" href="/2017/08/21/2017/webpack 开发环境跨域解决方案/#more">more >></a>
+        
       
 
       
@@ -656,14 +662,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="关于h5-video的一些文章"><a href="#关于h5-video的一些文章" class="headerlink" title="关于h5 video的一些文章"></a>关于h5 video的一些文章</h1><p><a href="https://aotu.io/notes/2017/01/11/mobile-video/" target="_blank" rel="noopener">视频H5のVideo标签在微信里的坑和技巧</a></p>
-<p><a href="https://www.h5-share.com/articles/201702/videowechat.html?winzoom=1.25" target="_blank" rel="noopener">H5案例分享：微信视频播放全屏问题</a></p>
-<p><a href="https://www.zhihu.com/question/36423771" target="_blank" rel="noopener">微信内置浏览器 如何小窗不全屏播放视频？</a></p>
-<p><a href="https://x5.tencent.com/guide?id=2001" target="_blank" rel="noopener">腾讯浏览服务</a></p>
-<p><a href="http://www.cnblogs.com/jinjinyike/p/6519525.html" target="_blank" rel="noopener">H5微信播放全屏问题</a></p>
-<p><a href="https://imququ.com/post/html5-live-player-2.html" target="_blank" rel="noopener">HTML5 视频直播</a></p>
-<p><a href="http://bbs.mb.qq.com/thread-1416936-1-1.html" target="_blank" rel="noopener">TBS开发调试利器——TBS Studio开篇</a></p>
-
+        <p>关于移动端video的文章收录<br>
+        
+          <a class="article-more-a" href="/2017/08/21/2017/关于h5 video的一些文章/#more">more >></a>
+        
       
 
       
@@ -721,8 +723,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="js-实现多媒体录制"><a href="#js-实现多媒体录制" class="headerlink" title="js 实现多媒体录制"></a>js 实现多媒体录制</h1><p><a href="https://github.com/streamproc/MediaStreamRecorder" target="_blank" rel="noopener">MediaStreamRecorder</a></p>
-
+        <p>js调用摄像头录制视频<br><a href="https://github.com/streamproc/MediaStreamRecorder" target="_blank" rel="noopener">MediaStreamRecorder</a><br>
+        
+          <a class="article-more-a" href="/2017/08/16/2017/js 实现多媒体录制/#more">more >></a>
+        
       
 
       
@@ -856,27 +860,19 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">cdn</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">打包</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">others</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">调试</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">vue</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">css3</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">others</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -900,14 +896,6 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">跨域</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">webpack</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">node</a>
               </li>
              
@@ -916,11 +904,7 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">gitpage</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+                <a href="javascript:void(0)" class="js-tag color1">video</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -936,11 +920,11 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">video</a>
+                <a href="javascript:void(0)" class="js-tag color3">跨域</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">其他</a>
+                <a href="javascript:void(0)" class="js-tag color3">webpack</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -948,7 +932,7 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">css3</a>
+                <a href="javascript:void(0)" class="js-tag color3">其他</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -956,7 +940,15 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">swiper</a>
+                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">cdn</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">打包</a>
               </li>
             
             <div class="clearfix"></div>
